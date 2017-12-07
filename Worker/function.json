@@ -1,12 +1,12 @@
 {
-  "disabled": false,
   "bindings": [
     {
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "js-queue-items",
-      "connection": ""
+      "queueName": "slqueue",
+      "connection": "AzureWebJobsDashboard"
     }
-  ]
+  ],
+  "disabled": false
 }

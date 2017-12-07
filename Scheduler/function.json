@@ -1,5 +1,4 @@
 {
-  "disabled": false,
   "bindings": [
     {
       "authLevel": "function",
@@ -11,6 +10,14 @@
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "type": "queue",
+      "name": "outputQueueItem",
+      "queueName": "slqueue",
+      "connection": "AzureWebJobsDashboard",
+      "direction": "out"
     }
-  ]
+  ],
+  "disabled": false
 }
