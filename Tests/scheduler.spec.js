@@ -22,7 +22,7 @@ describe('Scheduler function', () => {
                 status: 200
             },
             log: function (str) {
-                console.log(str);
+                console.log(str); // eslint-disable-line no-console
             },
             bindings: {
                 outputQueueItem: "fake_queue_value"

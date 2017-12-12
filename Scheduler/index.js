@@ -4,7 +4,7 @@ module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     context.log('Large import sample');
-    var app = express();
+    var app = express(); // eslint-disable-line no-unused-vars
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
