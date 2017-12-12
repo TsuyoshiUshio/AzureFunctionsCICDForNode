@@ -1,0 +1,71 @@
+queue:
+  name: Hosted VS2017
+  demands: npm
+
+
+steps:
+- task: Npm@1
+  inputs:
+    verbose: "false"
+
+- task: Npm@1
+  inputs:
+    command: "custom"
+    workingDir: "Tests"
+    verbose: "false"
+    customCommand: "run report"
+
+- task: Npm@1
+  inputs:
+    command: "custom"
+    verbose: "false"
+    customCommand: "install -g azure-functions-pack"
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: "test-results.xml"
+
+- task: Npm@1
+  inputs:
+    command: "custom"
+    verbose: "false"
+    customCommand: "run security-check"
+
+- task: Npm@1
+  inputs:
+    command: "custom"
+    verbose: "false"
+    customCommand: "run lint"
+
+- task: Npm@1
+  inputs:
+    command: "custom"
+    verbose: "false"
+    customCommand: "run pack"
+
+- task: DeleteFiles@1
+  inputs:
+    Contents: "node_modules"
+
+- task: DeleteFiles@1
+  inputs:
+    Contents: "Tests"
+
+- task: CopyFiles@2
+  inputs:
+    TargetFolder: "$(Build.ArtifactStagingDirectory)/functionapp"
+
+- task: ArchiveFiles@1
+  inputs:
+    rootFolder: "$(Build.ArtifactStagingDirectory)/FunctionApp"
+    includeRootFolder: "false"
+    archiveFile: "$(Build.ArtifactStagingDirectory)/FunctionApp.zip"
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: "$(Build.ArtifactStagingDirectory)/FunctionApp.zip"
+    ArtifactName: "drop"
+    ArtifactType: "Container"
+
+
+
