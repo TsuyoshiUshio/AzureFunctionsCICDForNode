@@ -1,0 +1,25 @@
+{
+  "name": "nodesample",
+  "version": "1.0.0",
+  "description": "Sample of VSTS deployment ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha Tests/*.spec.js",
+    "report": "mocha Tests/*.spec.js --reporter mocha-junit-reporter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://talkdevops@vs-ssh.visualstudio.com:22/AzureFunctionsSpike/_ssh/node"
+  },
+  "author": "Tsuyoshi Ushio",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "mocha-junit-reporter": "^1.15.0",
+    "sinon": "^4.1.3"
+  }
+}

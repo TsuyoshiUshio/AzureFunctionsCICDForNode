@@ -1,5 +1,10 @@
+const express = require('express');
+
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
+
+    context.log('Large import sample');
+    var app = express();
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
