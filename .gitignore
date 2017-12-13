@@ -26,3 +26,5 @@ local.settings.json
 
 node_modules
 test-results.xml
+
+.DS_Store
